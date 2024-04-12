@@ -7,7 +7,7 @@ import { getAllDatabases } from "./controllers/TestController";
 
 const app = express();
 
-const env = nunjucks.configure('views', {
+nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
