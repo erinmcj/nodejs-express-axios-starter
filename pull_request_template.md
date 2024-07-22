@@ -14,12 +14,11 @@ Please include a summary of the change and which issue is fixed.
  
 #### Code Quality
 - [ ] I have run linting and there were no errors.
-- [ ] I have run accessibility tests and there were no errors.
  
 #### Testing
 - [ ] New functionality is tested.
 - [ ] All unit and integration tests passed.
-- [ ] The changes have been reviewed for accessibility compliance.
+- [ ] I have run accessibility tests and there were no errors.
  
 #### Deployment
 - [ ] Documentation has been updated where needed.
