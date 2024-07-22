@@ -14,7 +14,7 @@ Please include a summary of the change and which issue is fixed.
  
 #### Code Quality
 - [ ] I have run linting and there were no errors
-- [ ] 
+- [ ] The changes have been reviewed for accessibility compliance.
  
 #### Testing
 - [ ] New functionality is tested
