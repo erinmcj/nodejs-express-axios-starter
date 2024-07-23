@@ -1,4 +1,4 @@
-name: Java Linter
+name: Typescript Linter
 
 on:
   push:
