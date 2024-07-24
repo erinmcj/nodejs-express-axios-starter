@@ -30,3 +30,7 @@ app.listen(3000, () => {
 });
 
 app.get('/', getAllDatabases);
+
+app.get('/index', async (req: express.Request, res: express.Response) => {
+    res.render('index.html');
+})
