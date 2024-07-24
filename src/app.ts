@@ -3,7 +3,7 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 
-import { getOpenJobRoles } from "./controllers/JobRolesController";
+import { getOpenJobRoles } from "./controllers/JobRoleController";
 
 const app = express();
 
