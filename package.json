@@ -7,7 +7,7 @@
     "start": "tsc && node dist/app.js",
     "dev": "nodemon src/app.ts",
     "linter": "npx eslint .",
-    "test": "mocha --require ts-node/register test/unit/**/*.ts"
+    "test": "mocha --require ts-node/register test/**/*.ts"
   },
   "keywords": [],
   "author": "Shaun Ganley <shaung@kainos.com>",
