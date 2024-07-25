@@ -4,11 +4,10 @@ import bodyParser from "body-parser";
 import session from "express-session";
 
 import {getAllDatabases} from "./controllers/TestController";
-import path from "node:path";
 
 const app = express();
 
-nunjucks.configure(path.join(__dirname, 'views'), {
+nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
@@ -27,7 +26,7 @@ declare module "express-session" {
     }
 }
 
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static('views'));
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');
