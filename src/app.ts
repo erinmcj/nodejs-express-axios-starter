@@ -17,7 +17,11 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
-app.use(express.static('views'));
+
+var path = require('path');
+app.use('/static', express.static(path.join(__dirname, 'public')));
+//app.use(express.static('views'));
+//app.use(express.static('public'));
 
 app.use(session({ secret: 'SUPER_SECRET', cookie: { maxAge: 28800000 }}));
 
@@ -34,5 +38,5 @@ app.listen(3000, () => {
 app.get('/', getAllDatabases);
 
 app.get('/index', async (req: express.Request, res: express.Response) => {
-    res.render('index.html');
+  res.render(path.join(__dirname, '../views', 'index.html'));
 })
