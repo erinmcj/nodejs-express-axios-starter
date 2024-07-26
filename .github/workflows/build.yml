@@ -27,4 +27,4 @@ jobs:
       - name: Start application
         run: npm start
       - name: Run accessibility tests
-        name: pa11y-ci
+        run: pa11y-ci
