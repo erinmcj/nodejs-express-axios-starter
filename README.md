@@ -1,4 +1,4 @@
-# nodejs-express-axios-starter
+# kainos-job-role-manager-frontend
 
 ## How to start the application
 1. Run `npm install` to install application dependencies
@@ -8,5 +8,12 @@
 ## How to run linting checks
 1. Run `npm run linter` to run linting checks
 
+## How to run tests
+# Unit tests 
+1. npm run test-unit
+
+# Integration tests
+1. npm run test-integration
+
 ## Backend
-1. Follow the steps to run the backend for this application <a href="https://github.com/shaunganley/java-dropwizard-flyway-starter" target="_blank">here</a>
+1. Follow the steps to run the backend for this application <a href="https://github.com/thomkainos/kainos-job-role-manager-backend" target="_blank">here</a>
