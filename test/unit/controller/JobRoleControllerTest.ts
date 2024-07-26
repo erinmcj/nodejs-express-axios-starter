@@ -4,7 +4,7 @@ import * as JobRoleController from "../../../src/controllers/JobRoleController";
 
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { Request, Response } from "express";
+import { Request } from "express";
 
 const jobRoleResponse: JobRoleResponse = {
     roleId: 1,
@@ -28,7 +28,7 @@ describe('JobRoleController', function () {
             sinon.stub(JobRoleService, 'getAllOpenJobRoles').resolves(jobRolesList);
             
             const req = { } as Request;
-            const res = { render: sinon.spy() };
+            const res = { render: sinon.spy() }; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await JobRoleController.getOpenJobRoles(req, res as any);
 
@@ -42,7 +42,7 @@ describe('JobRoleController', function () {
             sinon.stub(JobRoleService, 'getAllOpenJobRoles').resolves(emptyJobRoles);
 
             const req = { } as Request;
-            const res = { render: sinon.spy() };
+            const res = { render: sinon.spy() } ; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await JobRoleController.getOpenJobRoles(req, res as any);
 
@@ -56,7 +56,7 @@ describe('JobRoleController', function () {
             sinon.stub(JobRoleService, 'getAllOpenJobRoles').rejects(new Error(errorMessage));
 
             const req = {} as Request;
-            const res = { render: sinon.spy(), locals: { errorMessage: errorMessage }};
+            const res = { render: sinon.spy(), locals: { errorMessage: errorMessage }}; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await JobRoleController.getOpenJobRoles(req, res as any);
 
