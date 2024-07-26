@@ -1,0 +1,101 @@
+
+html, body {
+    color: #252d4f;
+    font-family: "Century Gothic";
+    font-size: 1.6rem;
+    letter-spacing: 0;
+    line-height: 2.4rem;
+    min-width: 320px;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('fonts/GOTHIC.TTF');
+}
+
+body {
+    line-height: 1;
+    font-family: sans-serif;
+    text-align: left;
+}
+.container {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, calc(min(3vw, 36px)));
+    padding-left: var(--bs-gutter-x, calc(min(3vw, 36px)));
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.header .container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header__container {
+    align-items: center;
+    display: flex;
+    height: 57px;
+}
+
+.header__logo-wrap {
+    margin-right: 33px;
+    padding-left: 0;
+}
+
+.header__logo-img {
+    width: 200px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(180deg, #252d4f 0%, rgba(37, 45, 79, 0) 100%), linear-gradient(90deg, #004631 0.02%, #61a83f 27.47%, #61a83f 40.06%, #41679f 69.71%, #283583 100%);
+    padding: 80px 0 0;
+    color: #fff;
+    font-weight: 300;
+    font-family: "Century Gothic";
+}
+
+.footer__container {
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+.footer__logo {
+    display: flex;
+}
+
+.footer__logo-image {
+    max-width: 250px;
+}
+
+.footer__bottom {
+    overflow: hidden;
+    position: relative;
+}
+
+.footer__bg-image {
+    background-position: center top;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: -5%;
+    top: 0;
+}
+
+.footer__copyrights {
+    align-self: flex-end;
+    font-size: 0.6rem;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.footer__contact__container {
+    display: flex;
+    margin-top: 10px;
+    font-size: 1.0rem;
+}
