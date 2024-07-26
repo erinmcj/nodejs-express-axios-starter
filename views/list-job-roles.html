@@ -1,45 +1,40 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Job Roles</title>
-    </head>
-    <body>
-        <h1>Job Roles</h1>
+{% extends "pageTemplate.njk" %}
 
-        {% if errormessage %}
-        <h2 style="color:red;font-weight:bold;">{{ errormessage }}</h2>
-        {% endif %}
+{% block content %}
+<h1>Job Roles</h1>
 
-        {% if roles and roles.length > 0 %}
-        <table>
-            <tr>
-                <th>Role Name</th>
-                <th>Location</th>
-                <th>Capability</th>
-                <th>Band</th>
-                <th>Closing Date</th>
-                <th>Role Status</th>
-            </tr>
-            {% for role in roles %}
-            <tr>
-                <td>{{ role.roleName }}</td>
-                <td>{{ role.location }}</td>
-                <td>{{ role.capability }}</td>
-                <td>{{ role.band }}</td>
-                <td>{{ role.closingDate }}</td>
-                <td>
-                    {% if role.roleStatus == 1 %}
-                    Open
-                    {% else %}
-                    Closed
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% else %}
-        There are no job roles open.
-        {% endif %}
+{% if errormessage %}
+<h2 style="color:red;font-weight:bold;">{{ errormessage }}</h2>
+{% endif %}
 
-    </body>
-</html>
+{% if roles and roles.length > 0 %}
+<table>
+    <tr>
+        <th>Role Name</th>
+        <th>Location</th>
+        <th>Capability</th>
+        <th>Band</th>
+        <th>Closing Date</th>
+        <th>Role Status</th>
+    </tr>
+    {% for role in roles %}
+    <tr>
+        <td>{{ role.roleName }}</td>
+        <td>{{ role.location }}</td>
+        <td>{{ role.capability }}</td>
+        <td>{{ role.band }}</td>
+        <td>{{ role.closingDate }}</td>
+        <td>
+            {% if role.roleStatus == 1 %}
+            Open
+            {% else %}
+            Closed
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+There are no job roles open.
+{% endif %}
+{% endblock %}
