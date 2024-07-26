@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { expect } from 'chai';
 import { URL } from "../../src/services/JobRoleService";
 
-describe('JobRoleIntegration', function () {
+describe.skip('JobRoleIntegration', function () {
     it('getOpenJobRoles should return list of job roles', async () => {
         try {
             const response: AxiosResponse = await axios.get(URL);  

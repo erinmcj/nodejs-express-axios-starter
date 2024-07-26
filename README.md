@@ -13,6 +13,7 @@
 1. npm run test-unit
 
 # Integration tests
+Note: integration tests are currently disabled since the backend server is currently not running outside of the application
 1. npm run test-integration
 
 ## Backend

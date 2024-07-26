@@ -1,7 +1,6 @@
 import express from "express";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
-import session from "express-session";
 
 import { getOpenJobRoles } from "./controllers/JobRoleController";
 
@@ -16,14 +15,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
 }))
-
-app.use(session({secret: 'SUPER_SECRET', cookie: {maxAge: 28800000}}));
-
-declare module "express-session" {
-    interface SessionData {
-        token: string;
-    }
-}
 
 app.use(express.static('views'));
 
