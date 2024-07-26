@@ -27,4 +27,4 @@ jobs:
       - name: Run integration tests
         run: npm run test-integration
       - name: Run accessibility tests
-        run: pa11y-ci
+        run: npm run pa11y-ci
