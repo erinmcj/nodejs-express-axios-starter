@@ -4,15 +4,13 @@ An online job application that serves both Kainos recruitment admin to retrieve 
 
 ## Table of Contents
 
-[How to start the application](#how-to-start)
 
-[How to run linting checks](#how-to-lint)
-
-[Tests](#tests)
- - [Unit Tests](#unit-test)
- - [Integration Test](#integration-test)
-
-[How to run the backend](#backend)
+- [How to start the application](#how-to-start)
+- [How to run linting checks](#how-to-lint)
+- [Tests](#tests)
+  - [Unit Tests](#unit-test)
+  - [Integration Test](#integration-test)
+- [How to run the backend](#backend)
 
 ## <a name="#how-to-start">How to start the application</a>
 
