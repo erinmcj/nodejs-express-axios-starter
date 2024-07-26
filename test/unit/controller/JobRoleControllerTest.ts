@@ -4,6 +4,7 @@ import * as JobRoleController from "../../../src/controllers/JobRoleController";
 
 import { expect } from 'chai';
 import sinon from 'sinon';
+import { Request, Response } from "express";
 
 const jobRoleResponse: JobRoleResponse = {
     roleId: 1,
@@ -26,10 +27,10 @@ describe('JobRoleController', function () {
 
             sinon.stub(JobRoleService, 'getAllOpenJobRoles').resolves(jobRolesList);
             
-            const req = { };
+            const req = { } as Request;
             const res = { render: sinon.spy() };
 
-            await JobRoleController.getOpenJobRoles(req as any, res as any);
+            await JobRoleController.getOpenJobRoles(req, res as any);
 
             expect(res.render.calledOnce).to.be.true;
             expect(res.render.calledWith('list-job-roles.html', { roles: jobRolesList })).to.be.true;
@@ -40,10 +41,10 @@ describe('JobRoleController', function () {
 
             sinon.stub(JobRoleService, 'getAllOpenJobRoles').rejects(new Error(errorMessage));
 
-            const req = {};
+            const req = {} as Request;
             const res = { render: sinon.spy(), locals: { errorMessage: errorMessage }};
 
-            await JobRoleController.getOpenJobRoles(req as any, res as any);
+            await JobRoleController.getOpenJobRoles(req, res as any);
 
             expect(res.render.calledOnce).to.be.true;
             expect(res.render.calledWith('list-job-roles.html')).to.be.true;
