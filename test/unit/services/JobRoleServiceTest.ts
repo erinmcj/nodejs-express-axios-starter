@@ -28,6 +28,16 @@ describe('JobRoleService', function () {
             expect(results[0]).to.deep.equal(jobRoleResponse);
         });
 
+        it('should return empty list of job roles when response returns empty list', async () => {
+            const data: JobRoleResponse[] = [];
+
+            mock.onGet(URL).reply(200, data);
+            
+            const results = await getAllOpenJobRoles();
+
+            expect(results).to.deep.equal(data);
+        });
+
         it('should throw exception when 500 when error returned from axios', async () => {
             mock.onGet(URL).reply(500);
 

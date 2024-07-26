@@ -36,6 +36,20 @@ describe('JobRoleController', function () {
             expect(res.render.calledWith('list-job-roles.html', { roles: jobRolesList })).to.be.true;
         });
 
+        it('should render view with no jobs found message when empty list of job roles returned', async () => {
+            const emptyJobRoles: JobRoleResponse[] = [];
+
+            sinon.stub(JobRoleService, 'getAllOpenJobRoles').resolves(emptyJobRoles);
+
+            const req = { } as Request;
+            const res = { render: sinon.spy() };
+
+            await JobRoleController.getOpenJobRoles(req, res as any);
+
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('list-job-roles.html', { roles: emptyJobRoles })).to.be.true;
+        })
+
         it('should render view with error message when error thrown', async () => {
             const errorMessage: string = 'Error message';
 
