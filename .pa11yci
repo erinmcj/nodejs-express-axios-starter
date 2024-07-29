@@ -1,0 +1,6 @@
+{
+    "urls": [
+        "http://localhost:3000/index",
+        "http://localhost:3000/job-roles"
+    ]
+}
