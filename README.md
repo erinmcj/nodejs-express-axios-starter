@@ -10,7 +10,7 @@ An online job application that serves both Kainos recruitment admin to retrieve 
 - [Tests](#tests)
   - [Unit Tests](#unit-test)
   - [Integration Test](#integration-test)
-- [How to run the backend](#backend)
+- [Running the backend](#backend)
 
 ## How to start the application
 
@@ -37,20 +37,20 @@ An online job application that serves both Kainos recruitment admin to retrieve 
     http://localhost:3000
  ```
 
-## How to run the linter check
+## How to run linting checks
 1. To run linting checks:
 ```
     npm run linter
 ```
 
-## How to run tests
+## Tests
 
-### Unit tests 
+### Unit Tests 
 ```
     npm run test-unit
 ```
 
-### Integration tests 
+### Integration Tests 
 ```
     npm run test-integration
 ```
