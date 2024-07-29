@@ -12,7 +12,7 @@ An online job application that serves both Kainos recruitment admin to retrieve 
   - [Integration Test](#integration-test)
 - [How to run the backend](#backend)
 
-## <a name="#how-to-start">How to start the application</a>
+## How to start the application
 
 1. Install application dependencies, run:
 ```
@@ -37,20 +37,20 @@ An online job application that serves both Kainos recruitment admin to retrieve 
     http://localhost:3000
  ```
 
-## <a name="#how-to-lint">How to run the linter check</a>
+## How to run the linter check
 1. To run linting checks:
 ```
     npm run linter
 ```
 
-## <a name="#tests">How to run tests</a>
+## How to run tests
 
-### <a name="#unit-test">Unit tests 
+### Unit tests 
 ```
     npm run test-unit
 ```
 
-### <a name="#integration-test">Integration tests 
+### Integration tests 
 ```
     npm run test-integration
 ```
@@ -58,6 +58,6 @@ An online job application that serves both Kainos recruitment admin to retrieve 
 Note: integration tests are currently disabled since the backend server is currently not running outside of the application
 
 
-## <a name="#backend">Running the backend
+## Running the backend
 1. Follow the steps to run the backend for this application <a href="https://github.com/thomkainos/kainos-job-role-manager-backend" target="_blank">here</a>
 
