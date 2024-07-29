@@ -55,6 +55,12 @@ An online job application that serves both Kainos recruitment admin to retrieve 
     npm run test-integration
 ```
 
+### Accessibility Tests
+
+1. Start the application by running `npm start` or `npm run dev`
+2. In another terminal, run the tests with this command `pa11y-ci`
+
+# Integration tests
 Note: integration tests are currently disabled since the backend server is currently not running outside of the application
 
 
