@@ -3,8 +3,6 @@ import {expect} from 'chai';
 import nunjucks from "nunjucks";
 import * as cheerio from 'cheerio';
 
-//TODO: looks like cheeriojs will help us traversing html: https://cheerio.js.org/docs/basics/loading maybe helpful??
-//TODO: is there any work to have these tests run using npm commands?
 describe('list-job-roles.html', () => {
     const templateFile = 'list-job-roles.html';
 
