@@ -9,22 +9,22 @@
 
 {% if roles and roles.length > 0 %}
 <table id="jobRolesTable">
-    <tr id="jobRolesTableHeaders">
-        <th class="headerCol">Role Name</th>
-        <th class="headerCol">Location</th>
-        <th class="headerCol">Capability</th>
-        <th class="headerCol">Band</th>
-        <th class="headerCol">Closing Date</th>
-        <th class="headerCol">Role Status</th>
+    <tr>
+        <th>Role Name</th>
+        <th>Location</th>
+        <th>Capability</th>
+        <th>Band</th>
+        <th>Closing Date</th>
+        <th>Role Status</th>
     </tr>
     {% for role in roles %}
-    <tr class="dataRow">
-        <td class="roleName">{{ role.roleName }}</td>
-        <td class="roleLocation">{{ role.location }}</td>
-        <td class="roleCapability">{{ role.capability }}</td>
-        <td class="roleBand">{{ role.band }}</td>
-        <td class="roleClosingDate">{{ role.closingDate }}</td>
-        <td class="roleStatus">
+    <tr>
+        <td>{{ role.roleName }}</td>
+        <td>{{ role.location }}</td>
+        <td>{{ role.capability }}</td>
+        <td>{{ role.band }}</td>
+        <td>{{ role.closingDate }}</td>
+        <td>
             {% if role.roleStatus == 1 %}
             Open
             {% else %}
