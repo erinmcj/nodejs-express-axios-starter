@@ -9,7 +9,8 @@ An online job application that serves both Kainos recruitment admin to retrieve 
 - [How to run linting checks](#how-to-lint)
 - [Tests](#tests)
   - [Unit Tests](#unit-test)
-  - [Integration Test](#integration-test)
+  - [Integration Tests](#integration-test)
+  - [User Interface Tests](#ui-test)
 - [Running the backend](#backend)
 
 ## How to start the application
@@ -54,14 +55,17 @@ An online job application that serves both Kainos recruitment admin to retrieve 
 ```
     npm run test-integration
 ```
+Note: integration tests are currently disabled since the backend server is currently not running outside of the application
+
+### User Interface Tests 
+```
+    npm run test-ui
+```
 
 ### Accessibility Tests
 
 1. Start the application by running `npm start` or `npm run dev`
 2. In another terminal, run the tests with this command `pa11y-ci`
-
-# Integration tests
-Note: integration tests are currently disabled since the backend server is currently not running outside of the application
 
 
 ## Running the backend
