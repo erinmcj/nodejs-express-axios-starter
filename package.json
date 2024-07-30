@@ -8,7 +8,8 @@
     "dev": "nodemon src/app.ts",
     "linter": "npx eslint .",
     "test-unit": "mocha --require ts-node/register test/unit/**/*.ts",
-    "test-integration": "mocha --require ts-node/register test/integration/*.ts"
+    "test-integration": "mocha --require ts-node/register test/integration/*.ts",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "Shaun Ganley <shaung@kainos.com>",
@@ -32,8 +33,9 @@
     "axios-mock-adapter": "^1.21.4",
     "chai": "^4.3.7",
     "eslint": "^8.57.0",
-    "mocha": "^10.2.0",
     "globals": "^15.8.0",
+    "husky": "^9.1.4",
+    "mocha": "^10.2.0",
     "nodemon": "^3.1.0",
     "sinon": "^17.0.1",
     "ts-node": "^10.9.2",
