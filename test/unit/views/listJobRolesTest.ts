@@ -21,7 +21,10 @@ describe('list-job-roles.html', () => {
         const renderedHtml = nunjucks.render(templateFile, context);
         const $ = cheerio.load(renderedHtml);
 
-        const actualNumDataRows = $('table').find('tr').length - 1; // exclude header row
+        const headerRow = $('tr').eq(0);
+        const dataRows = $('tr').not(headerRow);
+
+        const actualNumDataRows = dataRows.length;
         const expectedNumDataRows = context.roles.length;
 
         expect(actualNumDataRows).to.equal(expectedNumDataRows);
