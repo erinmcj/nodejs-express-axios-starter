@@ -1,6 +1,7 @@
 import path from "path";
 import {expect} from 'chai';
 import nunjucks from "nunjucks";
+import * as cheerio from 'cheerio';
 
 describe('index.html', () => {
     const templateFile = 'index.html';
@@ -27,10 +28,18 @@ describe('index.html', () => {
     it('should use the correct style sheet', () => {
         const context = {};
         const renderedHtml = nunjucks.render(templateFile, context);
+        const $ = cheerio.load(renderedHtml);
 
-        const expectedStyleSheet = 'style.css';
+        const expectedStyleSheets = [
+            'style.css'
+        ];
 
-        expect(renderedHtml).to.include(expectedStyleSheet);
+        const styleLinkTags = $('[rel="stylesheet"]');
+        const actualStyleSheets = styleLinkTags.map((i, styleTag) => {
+            return $(styleTag).attr('href');
+        }).get();
+
+        expect(expectedStyleSheets).to.eql(actualStyleSheets);
     });
 
     it('should display correct contact information', () => {
