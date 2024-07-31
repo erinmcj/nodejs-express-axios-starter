@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllOpenJobRoles } from "../services/JobRoleService"
+import { getAllOpenJobRoles, getJobRoleById } from "../services/JobRoleService"
 
 export const getOpenJobRoles = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
@@ -7,5 +7,14 @@ export const getOpenJobRoles = async (req: express.Request, res: express.Respons
     } catch (e) {
         res.locals.errormessage = e.message;
         res.render('list-job-roles.html');
+    }
+}
+
+export const getJobRole = async (req: express.Request, res: express.Response): Promise<void> => {
+    try {
+        res.render('job-role-detail.html', { jobRole: await getJobRoleById(req.params.id) });
+    } catch (e) {
+        res.locals.errormessage = e.message;
+        res.render('job-role-detail.html');
     }
 }

@@ -5,6 +5,7 @@ import * as JobRoleController from "../../../src/controllers/JobRoleController";
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { Request } from "express";
+import { JobRoleDetailResponse } from "../../../src/models/JobRoleDetailResponse";
 
 const jobRoleResponse: JobRoleResponse = {
     roleId: 1,
@@ -15,6 +16,20 @@ const jobRoleResponse: JobRoleResponse = {
     closingDate: "2024-08-15 23:59:59",
     roleStatus: 1
 }
+
+const jobRoleDetailResponse: JobRoleDetailResponse = {
+    roleId: 2,
+    roleName: "Product Owner",
+    location: "Toronto, CA",
+    capability: "Digital Services",
+    band: "Trainee",
+    closingDate: "2024-08-15 23:59:59",
+    roleStatus: 1,
+    description: "Oversees products.",
+    responsibilities: "planning, organizing",
+    jobLink: "https://kainoscareerportal.com/ProductOwner"
+}
+
 
 describe('JobRoleController', function () {
     afterEach(() => {
@@ -64,5 +79,34 @@ describe('JobRoleController', function () {
             expect(res.render.calledWith('list-job-roles.html')).to.be.true;
             expect(res.locals.errorMessage).to.equal(errorMessage);
         });
+    })
+
+    describe('getJobRoleById', function () {
+        it('should render view with correct job role when service returns a job role', async() => {
+            sinon.stub(JobRoleService, 'getJobRoleById').resolves(jobRoleDetailResponse);
+
+            const req = { params: "2" };
+            const res = { render: sinon.spy() };
+
+            await JobRoleController.getJobRole(req as any, res as any);
+
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('job-role-detail.html', { jobRole: jobRoleDetailResponse})).to.be.true;
+        });
+
+        it('should return an error when service returns error', async() => {
+            const errorMessage: string = 'Error message';
+            sinon.stub(JobRoleService, 'getJobRoleById').rejects(new Error(errorMessage));
+
+            const req = { params: "2" };
+            const res = { render: sinon.spy(), locals: { errormessage: ''} };
+
+            await JobRoleController.getJobRole(req as any, res as any);
+
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('job-role-detail.html')).to.be.true;
+            expect(res.locals.errormessage).to.equal(errorMessage);
+        });
+
     })
 })

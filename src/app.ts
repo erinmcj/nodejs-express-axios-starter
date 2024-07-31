@@ -3,6 +3,7 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 
 import { getOpenJobRoles } from "./controllers/JobRoleController";
+import { getJobRoleById } from "./services/JobRoleService";
 
 const app = express();
 
@@ -27,3 +28,4 @@ app.get('/index', async (req: express.Request, res: express.Response) => {
 })
 
 app.get('/job-roles', getOpenJobRoles);
+app.get('/job-roles/:id', getJobRoleById);
