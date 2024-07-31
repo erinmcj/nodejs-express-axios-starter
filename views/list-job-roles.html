@@ -19,7 +19,9 @@
     </tr>
     {% for role in roles %}
     <tr>
-        <td>{{ role.roleName }}</td>
+        <td>
+            <a href="/job-roles/{{role.roleId}}" target="_blank">{{ role.roleName }}</a>
+        </td>
         <td>{{ role.location }}</td>
         <td>{{ role.capability }}</td>
         <td>{{ role.band }}</td>

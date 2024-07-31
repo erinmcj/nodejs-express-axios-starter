@@ -20,7 +20,7 @@ export const getAllOpenJobRoles = async (): Promise<JobRoleResponse[]> => {
     }
 }
 
-export const getJobRoleById = async function (id: string): Promise <JobRoleDetailResponse> {
+export const getJobRoleById = async (id: string): Promise <JobRoleDetailResponse> => {
     try {
         const response: AxiosResponse = await axios.get(URL + "/" + id);
         return response.data;
