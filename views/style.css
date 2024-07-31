@@ -99,3 +99,7 @@ body {
     margin-top: 10px;
     font-size: 1.0rem;
 }
+
+.form__container {
+    width: 70%;
+} 

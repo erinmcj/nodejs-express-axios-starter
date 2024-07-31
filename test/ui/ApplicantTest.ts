@@ -20,4 +20,9 @@ describe('Applicant UI Test', async () => {
 
         await driver.quit();
     });
+
+    // TO DO
+    it('As an applicant, I am able to login', async () => {
+        
+    })
 });

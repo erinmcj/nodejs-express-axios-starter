@@ -1,1 +1,18 @@
-{% extends "pageTemplate.njk" %}
+{% include "pageTemplate.njk" %}
+
+{% block content %}
+<form class="form__container" action='/login' method="post" >
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
+      <small id="usernameHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+
+  </form>
+
+{% endblock %}
