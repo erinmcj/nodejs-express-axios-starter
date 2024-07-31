@@ -8,7 +8,8 @@
     "dev": "nodemon src/app.ts",
     "linter": "npx eslint .",
     "test-unit": "mocha --require ts-node/register test/unit/**/*.ts",
-    "test-integration": "mocha --require ts-node/register test/integration/*.ts"
+    "test-integration": "mocha --require ts-node/register test/integration/*.ts",
+    "test-ui": "mocha --timeout 10000 --require ts-node/register test/ui/*.ts"
   },
   "keywords": [],
   "author": "Shaun Ganley <shaung@kainos.com>",
@@ -16,6 +17,7 @@
   "dependencies": {
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0-rc.12",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "nunjucks": "^3.2.4"
@@ -29,13 +31,15 @@
     "@types/node": "^20.11.30",
     "@types/nunjucks": "^3.2.6",
     "@types/sinon": "^17.0.3",
+    "@types/selenium-webdriver": "^4.1.22",
     "axios-mock-adapter": "^1.21.4",
     "chai": "^4.3.7",
     "eslint": "^8.57.0",
-    "mocha": "^10.2.0",
     "globals": "^15.8.0",
+    "mocha": "^10.2.0",
     "nodemon": "^3.1.0",
     "sinon": "^17.0.1",
+    "selenium-webdriver": "^4.9.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.6.0"
