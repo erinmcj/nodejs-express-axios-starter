@@ -20,4 +20,25 @@ describe('Applicant UI Test', async () => {
 
         await driver.quit();
     });
+
+    it('As an applicant, I am able to click on a job role and see the details', async () => {
+        const driver = new Builder().
+        withCapabilities(Capabilities.chrome()).
+        build();
+
+        const endPoint: string = 'job-roles';
+        await driver.get(baseUrl + endPoint);
+        //idk what I'm doing this is from chat
+        const element = driver.findElement(By.id('roleNameInList'));
+        driver.executeScript("arguments[0].scrollIntoView(true);", element);
+
+        await driver.findElement(By.linkText("Software Engineer")).click();
+
+        const name = await driver.findElement(By.id('roleName'));
+
+        expect(name).to.equal('Software Engineer');
+
+        await driver.quit();
+
+    });
 });

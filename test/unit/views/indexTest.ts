@@ -31,7 +31,7 @@ describe('index.html', () => {
         const $ = cheerio.load(renderedHtml);
 
         const expectedStyleSheets = [
-            'style.css'
+            '/style.css'
         ];
 
         const styleLinkTags = $('[rel="stylesheet"]');
