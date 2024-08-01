@@ -28,14 +28,16 @@ describe('Applicant UI Test', async () => {
 
         const endPoint: string = 'job-roles';
         await driver.get(baseUrl + endPoint);
-        //idk what I'm doing this is from chat
+        
         const element = driver.findElement(By.id('roleNameInList'));
         driver.executeScript("arguments[0].scrollIntoView(true);", element);
 
         await driver.findElement(By.linkText("Software Engineer")).click();
 
-        const name = await driver.findElement(By.id('roleName'));
-
+        const endPoint2: string = 'job-roles/1';
+        await driver.get(baseUrl + endPoint2);
+        
+       const name = await driver.findElement(By.id('superUniqueName')).getText();
         expect(name).to.equal('Software Engineer');
 
         await driver.quit();
