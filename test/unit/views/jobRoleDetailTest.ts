@@ -1,7 +1,6 @@
 import path from "path";
 import {expect} from 'chai';
 import nunjucks from "nunjucks";
-import * as cheerio from 'cheerio';
 
 describe('job-role-detail.html', () => {
     const templateFile = 'job-role-detail.html';
