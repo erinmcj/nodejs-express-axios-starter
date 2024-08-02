@@ -12,8 +12,8 @@ export const getOpenJobRoles = async (req: express.Request, res: express.Respons
 
 export const getJobRole = async (req: express.Request, res: express.Response): Promise<void> => {
 
-    var id = req.params.id;
-    var idNumber = Number(id);
+    const id = req.params.id;
+    const idNumber = Number(id);
 
     if(isNaN(idNumber)) {
         res.locals.errormessage = "Invalid job role id";
