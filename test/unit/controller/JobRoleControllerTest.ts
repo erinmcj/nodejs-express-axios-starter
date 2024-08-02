@@ -82,10 +82,11 @@ describe('JobRoleController', function () {
     })
 
     describe('getJobRoleById', function () {
+        
         it('should render view with correct job role when service returns a job role', async() => {
             sinon.stub(JobRoleService, 'getJobRoleById').resolves(jobRoleDetailResponse);
 
-            const req = { params: "2" };
+            const req = { params: { id: 2 } };
             const res = { render: sinon.spy() };
 
             await JobRoleController.getJobRole(req as any, res as any);
@@ -93,12 +94,26 @@ describe('JobRoleController', function () {
             expect(res.render.calledOnce).to.be.true;
             expect(res.render.calledWith('job-role-detail.html', { jobRole: jobRoleDetailResponse})).to.be.true;
         });
+        
 
-        it('should return an error when service returns error', async() => {
+        it('should return an error message when service returns error', async() => {
             const errorMessage: string = 'Error message';
             sinon.stub(JobRoleService, 'getJobRoleById').rejects(new Error(errorMessage));
 
-            const req = { params: "2" };
+            const req = { params: { id: 2 } };
+            const res = { render: sinon.spy(), locals: { errormessage: ''} };
+
+            await JobRoleController.getJobRole(req as any, res as any);
+
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('job-role-detail.html')).to.be.true;
+            expect(res.locals.errormessage).to.equal(errorMessage);
+        }); 
+
+        it('should return an error message when an invalid id is entered', async() => {
+            const errorMessage: string = 'Invalid job role id';
+
+            const req = { params: "gcuieobcue" };
             const res = { render: sinon.spy(), locals: { errormessage: ''} };
 
             await JobRoleController.getJobRole(req as any, res as any);
