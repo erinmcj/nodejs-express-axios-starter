@@ -11,7 +11,7 @@ eyJhbGciOiJIUzI1NiJ9.
 eyJpYXQiOjE3MjI4NjM2MzEsImV4cCI6MTcyMjg2MzYzMSwiUm9sZSI6MSwic3ViIjoidXNlcjEiLCJpc3MiOiJLYWlub3MgSm9iIFJvbGUgTWFuYWdlciJ9.
 XuZH9clgCVeD5FS6x-JvfsUL73FrDQqgrhyR7fDjfo8
 `
-
+// FIX ME: Write service test
 describe('AuthService', function () {
     describe('getToken', function () {
         it.only('should return token if a token is returned from server', async () => {

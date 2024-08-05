@@ -1,7 +1,8 @@
 {% include "pageTemplate.njk" %}
 
 {% block content %}
-<form class="form__container" action='/loginForm' method="post">
+<div style="display: flex; justify-content: center; padding-top: 6em;">
+  <form class="form__container" action='/loginForm' method="post">
     <div class="form-group">
       <label for="username">Username</label>
       <input name="username" type="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
@@ -18,5 +19,5 @@
 {% endif %}
     <button type="submit" class="btn btn-primary">Login</button>
 </form>
-
+</div>
 {% endblock %}

@@ -32,6 +32,8 @@ body {
 }
 
 .header__container {
+    padding-top: 4em;
+    justify-content: center;
     align-items: center;
     display: flex;
     height: 57px;
