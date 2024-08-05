@@ -20,6 +20,8 @@ An online job application that serves both Kainos recruitment admin to retrieve 
     npm install
 ```
 
+2. Set the SESSION_KEY environment variable in a .env file
+
 2. Start the application with either:
 
 ```
