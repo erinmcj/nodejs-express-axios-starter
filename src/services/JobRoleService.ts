@@ -3,7 +3,7 @@ import { JobRoleResponse } from "../models/JobRoleResponse";
 
 axios.defaults.baseURL = process.env.API_URL || "http://localhost:8080/";
 
-export const URL: string = "/api/job-roles";
+export const URL: string = "api/job-roles";
 
 export const getAllOpenJobRoles = async (): Promise<JobRoleResponse[]> => {
     try {
