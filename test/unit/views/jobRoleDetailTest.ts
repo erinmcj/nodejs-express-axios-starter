@@ -56,8 +56,6 @@ describe('job-role-detail.html', () => {
         
         const renderedHtml = nunjucks.render(templateFile, context);
 
-        const $ = cheerio.load(renderedHtml);
-
         const expectedHtml = 
         `<td>
             
