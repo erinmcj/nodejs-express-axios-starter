@@ -17,50 +17,61 @@ describe('job-role-detail.html', () => {
         expect(renderedHtml).to.include('<h2 style="color:red;font-weight:bold;">Error message</h2>');
     });
 
-    it('should display a job role when the job role exists in the db', () => {
+    it('should display individual job role information when the job role exists in the db', () => {
         const context = {
-            role: [
+            jobRole: 
                 { roleName: 'Software Engineer', location: 'Toronto', capability: 'Development', band: 'B2', closingDate: '2024-08-01', roleStatus: 1, description: "full stack", responsibilities: "coding", jobLink: "www.softwareengineer.com" }
-            ]
         };
 
         const renderedHtml = nunjucks.render(templateFile, context);
         const $ = cheerio.load(renderedHtml);
 
+        const listItems = $('tr > td');
 
-        const headerRow = $('tr').eq(0);
-        const dataRows = $('tr').not(headerRow);
+        const items = listItems.map((index, el) => {
+        return $(el).text().trim();
+        }).get();
 
-        const actualNumDataRows = dataRows.length;
-        const expectedNumDataRows = context.role.length;
+        const expectedData = [
+            'Software Engineer',
+            'Toronto',
+            'Development',
+            'B2',
+            '2024-08-01',
+            'Open',
+            'full stack',
+            'coding',
+            'Job Specification'
+          ];
 
-        expect(actualNumDataRows).to.equal(expectedNumDataRows);
+        expect(items).to.deep.equal(expectedData);
 
     });
 
-    it('should display open status for a job role with role status of 1', () => {
+    it('should display open status for an individual job role with role status of 1', () => {
         const context = {
-            roles: [
+            jobRole: 
                 { roleName: 'Software Engineer', location: 'Toronto', capability: 'Development', band: 'B2', closingDate: '2024-08-01', roleStatus: 1, description: 'full stack', responsibilities: 'coding', jobLink: 'www.softwareengineer.com' },
-            ]
-        };
-
+        }; 
+        
         const renderedHtml = nunjucks.render(templateFile, context);
+
+        const $ = cheerio.load(renderedHtml);
+
         const expectedHtml = 
         `<td>
             
             Open
             
-        </td>`
+        </td>`;
 
         expect(renderedHtml).to.include(expectedHtml);
     });
 
-    it('should display closed status for a job role with role status of 0', () => {
+    it('should display closed status for an individual job role with role status of 0', () => {
         const context = {
-            roles: [
-                { roleName: 'Software Engineer', location: 'Toronto', capability: 'Development', band: 'B2', closingDate: '2024-08-01', roleStatus: 0 },
-            ]
+            jobRole:
+                { roleName: 'Software Engineer', location: 'Toronto', capability: 'Development', band: 'B2', closingDate: '2024-08-01', roleStatus: 0, description: 'full stack', responsibilities: 'coding', jobLink: 'www.softwareengineer.com' },
         };
 
         const renderedHtml = nunjucks.render(templateFile, context);
