@@ -5,8 +5,8 @@
 
 {% if errormessage %}
 <h2 style="color:red;font-weight:bold;">{{ errormessage }}</h2>
-{% endif %}
 
+{% else %}
 <table>
     <tr>
         <th>Role Name</th>
@@ -40,4 +40,5 @@
         </td>
     </tr>
 </table>
+{% endif %}
 {% endblock %}
