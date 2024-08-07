@@ -35,3 +35,19 @@ jobs:
       run: |
         docker build --build-arg API_URL=${API_URL} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+  pa11y:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install pa11y-ci dependencies.
+      run: npm install
+
+    - name: Run pa11y
+      run: pa11y-ci
+
+
+
