@@ -27,7 +27,7 @@ describe.skip('JobRoleIntegration', function () {
             expect(status).to.equal(200);
             expect(data).to.not.be.null;
         } catch (e) {
-            return;
+            return e.message;
         }
     })
 })

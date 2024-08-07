@@ -20,12 +20,12 @@ export const getAllOpenJobRoles = async (): Promise<JobRoleResponse[]> => {
     }
 }
 
-export const getJobRoleById = async (id: string): Promise <JobRoleDetailResponse> => {
+export const getJobRoleById = async (id: Number): Promise <JobRoleDetailResponse> => {
     try {
         const response: AxiosResponse = await axios.get(URL + "/" + id);
         return response.data;
 
     } catch (e) {
-        throw new Error("Could not get job role");
+        throw new Error('We encountered a problem while trying to retrieve this job role. Please try again later!');
     }
 }

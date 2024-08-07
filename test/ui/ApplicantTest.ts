@@ -37,7 +37,7 @@ describe('Applicant UI Test', async () => {
         const endPoint2: string = 'job-roles/1';
         await driver.get(baseUrl + endPoint2);
         
-       const name = await driver.findElement(By.id('superUniqueName')).getText();
+       const name = await driver.findElement(By.id('roleName')).getText();
         expect(name).to.equal('Software Engineer');
 
         await driver.quit();

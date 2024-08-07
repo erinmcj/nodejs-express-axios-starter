@@ -20,7 +20,7 @@ export const getJobRole = async (req: express.Request, res: express.Response): P
         res.render('job-role-detail.html');
     } else {
         try {
-            res.render('job-role-detail.html', { jobRole: await getJobRoleById(req.params.id) });
+            res.render('job-role-detail.html', { jobRole: await getJobRoleById(idNumber) });
         } catch (e) {
             res.locals.errormessage = e.message;
             res.render('job-role-detail.html');

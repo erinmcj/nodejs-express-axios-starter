@@ -69,7 +69,7 @@ describe('JobRoleService', function () {
 
             mock.onGet(URL + "/2").reply(200, jobRoleDetailResponse);
 
-            const result = await getJobRoleById("2");
+            const result = await getJobRoleById(2);
 
             expect(result).to.deep.equal(jobRoleDetailResponse);
         })
@@ -78,9 +78,9 @@ describe('JobRoleService', function () {
             mock.onGet(URL + "/2").reply(500);
 
             try {
-                await getJobRoleById("2");
+                await getJobRoleById(2);
             } catch (e) {
-                expect(e.message).to.equal('Could not get job role');
+                expect(e.message).to.equal('We encountered a problem while trying to retrieve this job role. Please try again later!');
                 return;
             }
         })
