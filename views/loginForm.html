@@ -13,11 +13,11 @@
       <input name="password" type="password" class="form-control" id="password" placeholder="Password">
     </div>
     {% if errormessage %}
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger" role="alert" id="errorMessage">
     {{ errormessage }}
     </div>
-{% endif %}
-    <button type="submit" class="btn btn-primary">Login</button>
+    {% endif %}
+    <button type="submit" id="submit" class="btn btn-primary">Login</button>
 </form>
 </div>
 {% endblock %}

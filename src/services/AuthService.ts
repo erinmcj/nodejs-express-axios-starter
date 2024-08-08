@@ -7,20 +7,19 @@ export const URL: string = "api/auth/login";
 
 export const getToken = async (loginRequest: LoginRequest): Promise<string> => {
     try {
+        console.log("In service (req): " + loginRequest);
+        console.log("In service (url): " + axios.defaults.baseURL + URL);
         const response: AxiosResponse = await axios.post(URL, loginRequest);
-        console.log(response.data);
-        return response.data;
+        
+        return response.data.token;
     } catch (e) {
-        if (!e.response) {
-            throw new Error('The login service is currently unavailable. Please try again later.');
-        }
+        const statusCode = e.response.status;
 
-        if (e.response.status == 500) {
-            throw new Error('The login service is currently unavailable. Please try again later.');
-        } else if (e.response.status == 400) {
-            throw new Error('The password or username you\'ve entered is incorrect. Please try again');
+        if (statusCode == 422 || statusCode == 401 || statusCode == 400) {
+            throw new Error('The username or password you\'ve entered is incorrect. Please try again');
         } else {
-            throw new Error('An unexpected error occurred. Please try again.');
-        }
+            
+            throw new Error('The login service is currently unavailable. Please try again later. ' + statusCode);  
+        }       
     }
 }

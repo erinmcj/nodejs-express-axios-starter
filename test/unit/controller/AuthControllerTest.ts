@@ -6,7 +6,6 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { Request } from "express";
 import { LoginRequest } from "../../../src/models/LoginRequest";
-import { Session } from "express-session";
 
 const loginResponse: LoginResponse = {
     token: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjI4NjM2MzEsImV4cCI6MTcyMjg2MzYzMSwiUm9sZSI6MSwic3ViIjoidXNlcjEiLCJpc3MiOiJLYWlub3MgSm9iIFJvbGUgTWFuYWdlciJ9.XuZH9clgCVeD5FS6x-JvfsUL73FrDQqgrhyR7fDjfo8'
@@ -139,7 +138,7 @@ describe('AuthController', function () {
                     destroy: destroyStubWithUnsuccessfulResolve
                 }
             } as unknown as Request;
-
+            
             const res = { 
                 redirect: sinon.spy(),
                 render: sinon.spy(),
@@ -156,7 +155,6 @@ describe('AuthController', function () {
 
         it('should redirect to login page if session does not exist', async () => {            
             const req = { } as unknown as Request;
-
             const res = { 
                 redirect: sinon.spy()
             };
