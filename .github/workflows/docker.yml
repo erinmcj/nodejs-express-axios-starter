@@ -53,7 +53,7 @@ jobs:
       run: curl -I https://8ddx2p65g4.eu-west-1.awsapprunner.com/job-roles
 
     - name: Run pa11y
-      run: test-accessibility > pa11y-output.txt || { echo 'Pa11y failed'; exit 1; }
+      run: npm run test-accessibility > pa11y-output.txt || { echo 'Pa11y failed'; exit 1; }
 
     - name: Print Pa11y Output
       run: cat pa11y-output.txt
