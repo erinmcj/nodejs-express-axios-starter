@@ -1,37 +1,51 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { getToken } from "../../../src/services/AuthService";
-import { LoginRequest } from "../../../src/models/LoginRequest";
-import { expect } from 'chai';
-import { LoginResponse } from "../../../src/models/LoginResponse";
+import {getToken} from "../../../src/services/AuthService";
+import {LoginRequest} from "../../../src/models/LoginRequest";
+import {expect} from 'chai';
 
-const loginResponse: LoginResponse = {
-    token: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjI4NjM2MzEsImV4cCI6MTcyMjg2MzYzMSwiUm9sZSI6MSwic3ViIjoidXNlcjEiLCJpc3MiOiJLYWlub3MgSm9iIFJvbGUgTWFuYWdlciJ9.XuZH9clgCVeD5FS6x-JvfsUL73FrDQqgrhyR7fDjfo8'
-}
+describe('AuthService', () => {
+    describe('getToken', () => {
+        let mock: MockAdapter;
 
-const loginRequest: LoginRequest = {
-    "username": "user1",
-    "password": "user1"
-}
+        const URL = "api/auth/login";
+        const loginResponse = {token: 'fakeToken'};
+        const loginRequest: LoginRequest = {
+            username: "username",
+            password: "password"
+        };
 
-const mock = new MockAdapter(axios);
+        before(() => {
+            mock = new MockAdapter(axios);
+        });
 
-describe('AuthService', function () {
-    describe('getToken', function () {
-        // FIX ME: getting login service unavailable error 404
-        it.only('should return token when a token is returned from server', async () => {
-            const URL = "api/auth/login";
-            
-            console.log("URL: " + axios.defaults.baseURL + URL);
+        afterEach(() => {
+            mock.reset();
+        });
+
+        after(() => {
+            mock.restore();
+        });
+
+        it('should return token when a token is returned from server', async () => {
             mock.onPost(URL).reply(200, loginResponse);
 
             const results = await getToken(loginRequest);
-            expect(results).to.equal(loginResponse.token);           
+            expect(results).to.equal(loginResponse.token);
         });
 
+        it('should throw error for incorrect username or password', async () => {
+            mock.onPost(URL).reply(401);
+
+            try {
+                await getToken(loginRequest);
+            } catch (e) {
+                expect(e.message).to.equal('The username or password you\'ve entered is incorrect. Please try again');
+            }
+        });
+
+        //TODO: this one fails because in the service code you add the exception
         it('should throw exception if server error is received', async () => {
-            const URL = "api/auth/login";
-        
             mock.onPost(URL).reply(500);
 
             try {
@@ -40,5 +54,5 @@ describe('AuthService', function () {
                 expect(e.message).to.equal('The login service is currently unavailable. Please try again later.');
             }
         });
-    })
+    });
 })
