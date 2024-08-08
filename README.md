@@ -67,8 +67,16 @@ Note: integration tests are currently disabled since the backend server is curre
 
 ### Accessibility Tests
 
-1. Start the application by running `npm start` or `npm run dev`
-2. In another terminal, run the tests with this command `pa11y-ci`
+#### Locally
+1. Add your local end point to the urls in the .pa11yci file (ex. https://localhost:3000/job-role)
+2. Run the application by doing the command `npm start` or `npm run dev`
+3. Open another terminal and run the following command: `npm run test-accessibility`
+4. Make sure to remove any localhost endpoints before merging to main.
+
+#### On Deployed Endpoints
+```
+    npm run test-accessibility
+```
 
 
 ## Running the backend
