@@ -2,6 +2,9 @@
 
 An online job application that serves both Kainos recruitment admin to retrieve and update job roles and their relevant information and applicants to apply for roles.
 
+Try out the application in production here:
+https://8ddx2p65g4.eu-west-1.awsapprunner.com/
+
 ## Table of Contents
 
 
@@ -13,7 +16,7 @@ An online job application that serves both Kainos recruitment admin to retrieve 
   - [User Interface Tests](#ui-test)
 - [Running the backend](#backend)
 
-## How to start the application
+## How to start the application (locally)
 
 1. Install application dependencies, run:
 ```
