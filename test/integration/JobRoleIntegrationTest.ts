@@ -18,16 +18,12 @@ describe.skip('JobRoleIntegration', function () {
     });
 
     it('getJobRoleById should return job role details', async () => {
-        try {
-            const response: AxiosResponse = await axios.get(URL);  
+            const response: AxiosResponse = await axios.get(URL + "/");  
             
             const data = response.data;
             const status = response.status;
 
             expect(status).to.equal(200);
             expect(data).to.not.be.null;
-        } catch (e) {
-            return e.message;
-        }
     })
 })
