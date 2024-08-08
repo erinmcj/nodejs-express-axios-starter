@@ -44,7 +44,7 @@ describe('Applicant UI Test', async () => {
 
     });
 
-    it.only('As an applicant, I can click on a job link and be taken to the correct page', async () => {
+    it('As an applicant, I can click on a job link and be taken to the correct page', async () => {
         const driver = new Builder().
         withCapabilities(Capabilities.chrome()).
         build();
