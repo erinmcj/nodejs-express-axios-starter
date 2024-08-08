@@ -14,7 +14,7 @@ XuZH9clgCVeD5FS6x-JvfsUL73FrDQqgrhyR7fDjfo8
 // FIX ME: Write service test
 describe('AuthService', function () {
     describe('getToken', function () {
-        it.only('should return token if a token is returned from server', async () => {
+        it('should return token if a token is returned from server', async () => {
             const loginRequest: LoginRequest = {
                 "username": "user1",
                 "password": "user1"

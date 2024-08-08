@@ -24,7 +24,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('views'));
 app.use(session({ 
     secret: process.env.SESSION_KEY, 
-    cookie: { maxAge: 28800000 , path: '/' }
+    cookie: { maxAge: 28800000 , path: '/' },
+    saveUninitialized: false
 }));
 
 app.listen(3000, () => {
