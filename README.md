@@ -23,7 +23,9 @@ https://8ddx2p65g4.eu-west-1.awsapprunner.com/
     npm install
 ```
 
-2. Set the SESSION_KEY environment variable in a .env file
+2. Set the SESSION_KEY environment variable 
+    - Locally: store in .env file
+    - Production: pass as a secret in Github repo settings
 
 2. Start the application with either:
 

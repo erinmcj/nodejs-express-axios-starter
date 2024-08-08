@@ -24,7 +24,7 @@ describe('AuthController', function () {
     describe('getLoginForm', function () {
         it('should render login form view', async () => {
             const req = { } as Request;
-            const res = { render: sinon.spy() };
+            const res = { render: sinon.spy() }; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await AuthController.getLoginForm(req, res as any);
 
@@ -48,7 +48,7 @@ describe('AuthController', function () {
                 render: sinon.spy(),
                 redirect: sinon.spy(),
                 locals: {}
-            };
+            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await AuthController.postLoginForm(req, res as any);
             
@@ -69,7 +69,29 @@ describe('AuthController', function () {
                 render: sinon.spy(),
                 redirect: sinon.spy(),
                 locals: {}
-            };
+            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
+
+            await AuthController.postLoginForm(req, res as any);
+            
+            expect(res.redirect.calledOnce).to.be.true;
+            expect(res.redirect.calledWith('/job-roles')).to.be.true;
+        });
+
+        it('should redirect to job roles page with error message if service returns empty token', async () => {
+            sinon.stub(AuthService, 'getToken').resolves(loginResponse.token);
+            
+            const req = {
+                body: { loginRequest },
+                session: {
+                    token: ''
+                }
+            } as Request;
+
+            const res = { 
+                render: sinon.spy(),
+                redirect: sinon.spy(),
+                locals: {}
+            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await AuthController.postLoginForm(req, res as any);
             
@@ -93,7 +115,7 @@ describe('AuthController', function () {
                 render: sinon.spy(),
                 redirect: sinon.spy(),
                 locals: { errorMessage: errMessage }
-            };
+            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await AuthController.postLoginForm(req, res as any);
             
@@ -117,7 +139,7 @@ describe('AuthController', function () {
             const res = { 
                 clearCookie: sinon.spy(),
                 redirect: sinon.spy(),
-            };
+            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await AuthController.postLogout(req, res as any);
 
@@ -143,7 +165,7 @@ describe('AuthController', function () {
                 redirect: sinon.spy(),
                 render: sinon.spy(),
                 locals: { errorMessage: errMessage },
-            };
+            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await AuthController.postLogout(req, res as any);
 
@@ -157,7 +179,7 @@ describe('AuthController', function () {
             const req = { } as unknown as Request;
             const res = { 
                 redirect: sinon.spy()
-            };
+            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
 
             await AuthController.postLogout(req, res as any);
 

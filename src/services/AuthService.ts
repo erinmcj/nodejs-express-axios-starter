@@ -7,20 +7,22 @@ export const URL: string = "api/auth/login";
 
 export const getToken = async (loginRequest: LoginRequest): Promise<string> => {
     try {
-        console.log("In service (req): " + loginRequest);
-        console.log("In service (url): " + axios.defaults.baseURL + URL);
         const response: AxiosResponse = await axios.post(URL, loginRequest);
 
-        return response.data.token;
+        const token = response.data.token;
+        if (!token) {
+            throw new Error('The login service is currently unavailable. Please try again later.');
+        }
+
+        return token;
     } catch (e) {
         const statusCode = e.response.status;
+        const clientErrorCodes = [422, 401, 400];
 
-        //TODO:  I would clean this up status code >= 500 or something
-        if (statusCode == 422 || statusCode == 401 || statusCode == 400) {
+        if (clientErrorCodes.includes(statusCode)) {
             throw new Error('The username or password you\'ve entered is incorrect. Please try again');
         } else {
-
-            throw new Error('The login service is currently unavailable. Please try again later. ' + statusCode);
-        }
+            throw new Error('The login service is currently unavailable. Please try again later.');  
+        }       
     }
 }
