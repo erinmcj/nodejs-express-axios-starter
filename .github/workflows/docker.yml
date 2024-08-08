@@ -42,12 +42,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
 
     - name: Install pa11y-ci dependencies.
       run: npm install
 
     - name: Run pa11y
-      run: npm run pa11y-ci
+      run: npm run test-accessibility
 
 
 
