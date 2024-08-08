@@ -1,0 +1,11 @@
+{
+    "defaults": {
+        "reporters": [
+            "cli",
+            "pa11y-ci-reporter-html"
+        ]
+    },
+    "urls": [
+        "http://localhost:3000/job-roles"
+    ]
+}
