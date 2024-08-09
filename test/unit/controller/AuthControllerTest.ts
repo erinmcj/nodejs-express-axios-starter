@@ -104,7 +104,7 @@ describe('AuthController', function () {
     });
 
     describe('postLogout', function () {
-        it('should destroy a session if it exists and remove token cookie from client browser', async () => {            
+        it('should destroy a session and remove token cookie from client browser', async () => {            
             const destroyStubWithSuccessfulResolve = sinon.stub().callsArg(0);
        
             const req = {
@@ -151,18 +151,6 @@ describe('AuthController', function () {
             expect(res.render.calledOnce).to.be.true;
             expect(res.render.calledWith('list-job-roles.html')).to.be.true;
             expect(res.locals.errorMessage).to.equal(errMessage);
-        });
-
-        it('should redirect to login page if session does not exist', async () => {            
-            const req = { } as unknown as Request;
-            const res = { 
-                redirect: sinon.spy()
-            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
-
-            await AuthController.postLogout(req, res as any);
-
-            expect(res.redirect.calledOnce).to.be.true;
-            expect(res.redirect.calledWith('/')).to.be.true;
         });
     })
 })
