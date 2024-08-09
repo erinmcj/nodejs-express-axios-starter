@@ -9,7 +9,7 @@ import { getLoginForm, postLoginForm, postLogout } from "./controllers/AuthContr
 
 config();
 if (!process.env.SESSION_KEY) {
-    throw Error("Please specify a SESSION_STORAGE environment variable");
+    throw Error("Please specify a SESSION_KEY environment variable");
 }
 
 const app = express();

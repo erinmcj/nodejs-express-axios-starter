@@ -31,8 +31,7 @@ describe('pageTemplate.njk', () => {
         const $ = cheerio.load(renderedHtml);
 
         const expectedStyleSheets = [
-            '/style.css',
-            'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css'
+            '/style.css'
         ];
 
         const styleLinkTags = $('[rel="stylesheet"]');

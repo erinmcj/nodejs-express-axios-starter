@@ -29,9 +29,10 @@ jobs:
     - name: Build & push the Docker image
       env:
         API_URL: ${{ secrets.API_URL }}
+        SESSION_KEY: ${{ secrets.SESSION_KEY }}
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: employee_demo
         IMAGE_TAG: team-canada-frontend
       run: |
-        docker build --build-arg API_URL=${API_URL} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build --build-arg API_URL=${API_URL} --build-arg SESSION_KEY=${SESSION_KEY} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
