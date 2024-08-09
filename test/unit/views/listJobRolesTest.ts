@@ -81,4 +81,15 @@ describe('list-job-roles.html', () => {
        
         expect(renderedHtml).to.include(expectedHtml);
     });
+
+    it('should display logout button', () => {
+        const renderedHtml = nunjucks.render(templateFile);
+        const $ = cheerio.load(renderedHtml);
+
+        const logoutButton = $('button[id="logoutButton"]');
+        expect(logoutButton).to.not.be.null;
+
+        const loginButtonText = logoutButton.text();
+        expect(loginButtonText).to.equal('Logout');
+    })
 });

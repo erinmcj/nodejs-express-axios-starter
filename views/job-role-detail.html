@@ -1,0 +1,44 @@
+{% extends "pageTemplate.njk" %}
+
+{% block content %}
+<h1>Job Role Details</h1>
+
+{% if errormessage %}
+<h2 style="color:red;font-weight:bold;">{{ errormessage }}</h2>
+
+{% else %}
+<table>
+    <tr>
+        <th>Role Name</th>
+        <th>Location</th>
+        <th>Capability</th>
+        <th>Band</th>
+        <th>Closing Date</th>
+        <th>Role Status</th>
+        <th>Description</th>
+        <th>Responsibilities</th>
+        <th>Job Link</th>
+
+    </tr>
+    <tr>
+        <td id="roleName">{{ jobRole.roleName }}</td>
+        <td>{{ jobRole.location }}</td>
+        <td>{{ jobRole.capability }}</td>
+        <td>{{ jobRole.band }}</td>
+        <td>{{ jobRole.closingDate }}</td>
+        <td>
+            {% if jobRole.roleStatus == 1 %}
+            Open
+            {% else %}
+            Closed
+            {% endif %}
+        </td>
+        <td>{{ jobRole.description }}</td>
+        <td>{{ jobRole.responsibilities }}</td>
+        <td> 
+            <a href="{{ jobRole.jobLink }}" target="_blank">Job Specification</a>
+        </td>
+    </tr>
+</table>
+{% endif %}
+{% endblock %}

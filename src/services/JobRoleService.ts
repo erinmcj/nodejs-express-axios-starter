@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { JobRoleResponse } from "../models/JobRoleResponse";
+import { JobRoleDetailResponse } from "../models/JobRoleDetailResponse";
 
 axios.defaults.baseURL = process.env.API_URL || "http://localhost:8080/";
 
@@ -16,5 +17,15 @@ export const getAllOpenJobRoles = async (): Promise<JobRoleResponse[]> => {
         } else {
             throw new Error(e.message);
         }
+    }
+}
+
+export const getJobRoleById = async (id: number): Promise <JobRoleDetailResponse> => {
+    try {
+        const response: AxiosResponse = await axios.get(URL + "/" + id);
+        return response.data;
+
+    } catch (e) {
+        throw new Error('We encountered a problem while trying to retrieve this job role. Please try again later!');
     }
 }

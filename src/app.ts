@@ -4,7 +4,7 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import { config } from "dotenv";
 
-import { getOpenJobRoles } from "./controllers/JobRoleController";
+import { getOpenJobRoles, getJobRole } from "./controllers/JobRoleController";
 import { getLoginForm, postLoginForm, postLogout } from "./controllers/AuthController";
 
 config();
@@ -37,6 +37,8 @@ app.get('/job-roles', getOpenJobRoles);
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 app.post('/logout', postLogout);
+app.get('/job-roles', getOpenJobRoles);
+app.get('/job-roles/:id', getJobRole);
 
 declare module "express-session" {
     interface SessionData {
