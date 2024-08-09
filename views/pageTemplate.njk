@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title> Kainos Career Portal</title>
         <link rel="stylesheet" href="/style.css"/>
+        {% block stylesheets %}
+        {% endblock %}
         <link rel="icon" href="/images/Green_Circle_Favicon.png" type="image/png">
     </head>
 
@@ -19,11 +21,14 @@
                     </div>
                 </div>
             </div>
+            {% block logout %}
+            {% endblock %}
         </header>
         {% endblock %}
         {% block content %}
         {% endblock %}
-        <footer class="footer" id="footer">
+    </body>
+    <footer class="footer" id="footer">
             <div class="footer__container">
                 <div class="footer__logo">
                     <picture>
@@ -43,5 +48,4 @@
                 </div>
             </div>
         </footer>
-    </body>
 </html>
