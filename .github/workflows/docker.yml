@@ -52,7 +52,7 @@ jobs:
     - name: Run pa11y
       env: 
         FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
-      run: npm run URL_ENV=FRONTEND_URL test-accessibility > pa11y-output.txt || { echo 'Pa11y failed'; exit 1; }
+      run: npm run test-accessibility > pa11y-output.txt || { echo 'Pa11y failed'; exit 1; }
 
     - name: Print Pa11y Output
       run: cat pa11y-output.txt
