@@ -9,6 +9,7 @@ if(URL_ENV == "Local"){
 
 module.exports = {
     urls: [
-        `${URL}/job-roles`
+        `${URL}/job-roles`,
+        `${URL}/job-roles/1`
     ]
 };
