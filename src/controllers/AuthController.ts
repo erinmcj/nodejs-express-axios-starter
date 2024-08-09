@@ -28,8 +28,8 @@ export const postLogout = async (req: express.Request, res: express.Response): P
                 res.render('list-job-roles.html');
             } else {
                 res.clearCookie('connect.sid');
-                res.redirect('/');
             }
         });
     }
+    res.redirect('/');
 }

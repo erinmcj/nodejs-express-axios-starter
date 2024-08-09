@@ -3,8 +3,8 @@ import {expect} from 'chai';
 import nunjucks from "nunjucks";
 import * as cheerio from 'cheerio';
 
-describe('index.html', () => {
-    const templateFile = 'index.html';
+describe('pageTemplate.njk', () => {
+    const templateFile = 'pageTemplate.njk';
     
     const viewsPath = path.resolve(__dirname, '../../../views');
     nunjucks.configure(viewsPath, { autoescape: true });
@@ -31,14 +31,16 @@ describe('index.html', () => {
         const $ = cheerio.load(renderedHtml);
 
         const expectedStyleSheets = [
-            'style.css'
+            'style.css',
+            'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css'
         ];
 
         const styleLinkTags = $('[rel="stylesheet"]');
         const actualStyleSheets = styleLinkTags.map((i, styleTag) => {
             return $(styleTag).attr('href');
         }).get();
-
+        
+        console.log(actualStyleSheets);
         expect(expectedStyleSheets).to.eql(actualStyleSheets);
     });
 

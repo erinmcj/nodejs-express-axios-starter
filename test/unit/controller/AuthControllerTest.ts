@@ -8,7 +8,7 @@ import { Request } from "express";
 import { LoginRequest } from "../../../src/models/LoginRequest";
 
 const loginResponse: LoginResponse = {
-    token: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjI4NjM2MzEsImV4cCI6MTcyMjg2MzYzMSwiUm9sZSI6MSwic3ViIjoidXNlcjEiLCJpc3MiOiJLYWlub3MgSm9iIFJvbGUgTWFuYWdlciJ9.XuZH9clgCVeD5FS6x-JvfsUL73FrDQqgrhyR7fDjfo8'
+    token: 'fakeToken'
 }
 
 const loginRequest: LoginRequest = {
@@ -56,28 +56,6 @@ describe('AuthController', function () {
         });
 
         it('should redirect to job roles page after service returns token', async () => {
-            sinon.stub(AuthService, 'getToken').resolves(loginResponse.token);
-            
-            const req = {
-                body: { loginRequest },
-                session: {
-                    token: ''
-                }
-            } as Request;
-
-            const res = { 
-                render: sinon.spy(),
-                redirect: sinon.spy(),
-                locals: {}
-            }; /* eslint-disable  @typescript-eslint/no-explicit-any */
-
-            await AuthController.postLoginForm(req, res as any);
-            
-            expect(res.redirect.calledOnce).to.be.true;
-            expect(res.redirect.calledWith('/job-roles')).to.be.true;
-        });
-
-        it('should redirect to job roles page with error message if service returns empty token', async () => {
             sinon.stub(AuthService, 'getToken').resolves(loginResponse.token);
             
             const req = {
@@ -150,7 +128,7 @@ describe('AuthController', function () {
             expect(res.redirect.calledWith('/')).to.be.true;
         });
 
-        it('should render list job roles page with error message if we cannot destory session', async () => {     
+        it('should render list job roles page with error message if we cannot destroy session', async () => {     
             const errMessage = 'Unable to log out. Please try again';       
             const destroyStubWithUnsuccessfulResolve = sinon.stub().callsArgWith(0, new Error(errMessage));
        

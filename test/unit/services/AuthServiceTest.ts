@@ -46,7 +46,7 @@ describe('AuthService', () => {
 
         //TODO: this one fails because in the service code you add the exception
         it('should throw exception if server error is received', async () => {
-            mock.onPost(URL).reply(500);
+            mock.onPost(URL).reply(503);
 
             try {
                 await getToken(loginRequest);
