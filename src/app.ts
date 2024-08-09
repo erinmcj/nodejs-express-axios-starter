@@ -19,12 +19,6 @@ nunjucks.configure('views', {
     express: app
 });
 
-declare module "express-session" {
-    interface SessionData {
-        token: string;
-    }
-}
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('views'));
@@ -45,3 +39,9 @@ app.post('/loginForm', postLoginForm);
 app.post('/logout', postLogout);
 app.get('/job-roles', getOpenJobRoles);
 app.get('/job-roles/:id', getJobRole);
+
+declare module "express-session" {
+    interface SessionData {
+        token: string;
+    }
+}
