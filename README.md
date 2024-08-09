@@ -66,10 +66,10 @@ Note: integration tests are currently disabled since the backend server is curre
 ```
 
 ### Accessibility Tests
-Make sure when you create a new endpoint to add the local url to the localpa11yci.json file and the deployed url to the .pa11yci file.
+Make sure when you create a new endpoint to add it to the .pa11yci.js file.
 #### Locally
 ```
-    pa11y-ci --config localpa11yci.json
+    npm run test-accessibility-local
 ```
 
 #### On Deployed Endpoints
