@@ -35,3 +35,27 @@ jobs:
       run: |
         docker build --build-arg API_URL=${API_URL} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+  pa11y:
+    needs: build
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+
+    - name: Install pa11y-ci dependencies.
+      run: npm install
+
+    - name: Run pa11y
+      env: 
+        FRONTEND_URL: https://8ddx2p65g4.eu-west-1.awsapprunner.com/
+      run: npm run test-accessibility > pa11y-output.txt || { echo 'Pa11y failed'; exit 1; }
+
+    - name: Print Pa11y Output
+      run: cat pa11y-output.txt
+
+
+
